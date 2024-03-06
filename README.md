@@ -1,6 +1,5 @@
-1. Створити план API
-   Придумати API, намалювати діаграму, і скинути скрін.
+For run App you fetch all project, use command "docker compose up" in the terminal
+of this project? and after that run App, also you should use Java 17
 
-2. Підняти API на SpringBoot
-   Повторити все, що було показано в лекції. Тобто створити початкову конфігурацію проекта, і створити контролер healthcheck.
-   Для цього - створити github репозиторій, та скинути в домашці посилання на PR.
+Full documentation you can find there:
+http://localhost:8080/swagger-ui/index.html
