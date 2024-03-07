@@ -16,7 +16,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-import java.util.Optional;
 
 @Slf4j
 @Service
@@ -41,11 +40,11 @@ public class GroupServiceImpl implements GroupService {
 
     @Override
     @Transactional(readOnly = true)
-    public Optional<GroupDto> get(int id) {
+    public GroupDto get(int id) {
         log.debug("Try get Group wih id {} from DB", id);
         Group group = groupRepository.findById(id).orElseThrow(
                 () -> new EntityNotFoundException("Group not found with ID " + id));
-        return Optional.ofNullable(convertToDto(group));
+        return convertToDto(group);
     }
 
     @Override

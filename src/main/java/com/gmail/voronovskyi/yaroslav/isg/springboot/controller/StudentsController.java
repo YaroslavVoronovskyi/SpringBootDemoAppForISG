@@ -18,7 +18,6 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
-import java.util.Optional;
 
 @Slf4j
 @RestController
@@ -29,9 +28,9 @@ public class StudentsController {
     private final StudentService studentService;
 
     @GetMapping("/{id}")
-    public Optional<StudentDto> get(@PathVariable(Constants.ENTITY_ID) int id) {
+    public StudentDto get(@PathVariable(Constants.ENTITY_ID) int id) {
         log.debug("Try get student wih id {}", id);
-        Optional<StudentDto> studentDto = studentService.get(id);
+        StudentDto studentDto = studentService.get(id);
         log.debug("Student wih id {} was successfully got", id);
         return studentDto;
     }

@@ -18,7 +18,6 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
-import java.util.Optional;
 
 @Slf4j
 @RestController
@@ -29,9 +28,9 @@ public class GroupsController {
     private final GroupService groupService;
 
     @GetMapping("/{id}")
-    public Optional<GroupDto> get(@PathVariable(Constants.ENTITY_ID) int id) {
+    public GroupDto get(@PathVariable(Constants.ENTITY_ID) int id) {
         log.debug("Try get group wih id {}", id);
-        Optional<GroupDto> groupDto = groupService.get(id);
+        GroupDto groupDto = groupService.get(id);
         log.debug("Group wih id {} was successfully got", id);
         return groupDto;
     }

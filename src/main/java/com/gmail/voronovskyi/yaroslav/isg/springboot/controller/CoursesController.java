@@ -18,7 +18,6 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
-import java.util.Optional;
 
 @Slf4j
 @RestController
@@ -29,9 +28,9 @@ public class CoursesController {
     private final CourseService courseService;
 
     @GetMapping("/{id}")
-    public Optional<CourseDto> get(@PathVariable(Constants.ENTITY_ID) int id) {
+    public CourseDto get(@PathVariable(Constants.ENTITY_ID) int id) {
         log.debug("Try get course wih id {}", id);
-        Optional<CourseDto> courseDto = courseService.get(id);
+        CourseDto courseDto = courseService.get(id);
         log.debug("Course wih id {} was successfully got", id);
         return courseDto;
     }

@@ -16,7 +16,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-import java.util.Optional;
 
 @Slf4j
 @Service
@@ -40,11 +39,11 @@ public class StudentServiceImpl implements StudentService {
 
     @Override
     @Transactional(readOnly = true)
-    public Optional<StudentDto> get(int id) {
+    public StudentDto get(int id) {
         log.debug("Try get Student wih id {} from DB", id);
         Student student = studentRepository.findById(id).orElseThrow(
                 () -> new EntityNotFoundException("Student not found with ID " + id));
-        return Optional.ofNullable(convertToDto(student));
+        return convertToDto(student);
     }
 
     @Override
