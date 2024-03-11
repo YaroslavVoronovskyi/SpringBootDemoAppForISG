@@ -4,10 +4,10 @@ import jakarta.persistence.EntityNotFoundException;
 import lombok.AllArgsConstructor;
 import org.springframework.core.Ordered;
 import org.springframework.core.annotation.Order;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestController;
@@ -20,8 +20,8 @@ import java.util.List;
 @AllArgsConstructor
 public class RestControllerExceptionHandler {
 
-    @ExceptionHandler(value = {MethodArgumentNotValidException.class})
-    public ResponseEntity<Object> handlerRequestException(MethodArgumentNotValidException exception) {
+    @ExceptionHandler(value = {DataIntegrityViolationException.class})
+    public ResponseEntity<Object> handlerRequestException(DataIntegrityViolationException exception) {
         ApiError apiError = ApiError.builder()
                 .error(HttpStatus.BAD_REQUEST.value())
                 .status(HttpStatus.BAD_REQUEST)

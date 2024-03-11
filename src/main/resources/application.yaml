@@ -3,14 +3,25 @@
         path: /swagger-ui.html
 
     spring:
+
       datasource:
         driver-class-name: com.mysql.cj.jdbc.Driver
-        username: ${JDBC_DATABASE_USERNAME:root}
-        password: ${JDBC_DATABASE_PASSWORD:AAAaaa011095}
-        url: ${JDBC_DATABASE_URL:jdbc:mysql://localhost:3306/Study?serverTimezone=UTC}
+        username: root
+        password: AAAaaa011095
+        url: jdbc:mysql://database-1.cgobzx0gtdbk.eu-central-1.rds.amazonaws.com/Study?serverTimezone=UTC
         platform: mysql
         initialization-mode: always
         continue-on-error: true
+
+#      datasource:
+#        driver-class-name: com.mysql.cj.jdbc.Driver
+#        username: ${JDBC_DATABASE_USERNAME:root}
+#        password: ${JDBC_DATABASE_PASSWORD:AAAaaa011095}
+#        url: ${JDBC_DATABASE_URL:jdbc:mysql://localhost:3306/Study?serverTimezone=UTC}
+#        platform: mysql
+#        initialization-mode: always
+#        continue-on-error: true
+
       jpa:
         show-sql: true
         generate-ddl: true

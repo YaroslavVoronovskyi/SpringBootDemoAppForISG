@@ -80,11 +80,7 @@ public class StudentServiceImpl implements StudentService {
 
 
     private StudentDto convertToDto(Student student) {
-        try {
-            return modelMapper.map(student, StudentDto.class);
-        } catch (MappingException exception) {
-            throw new EntityNotFoundException("Student does not exist or has been deleted");
-        }
+        return modelMapper.map(student, StudentDto.class);
     }
 
     private Student convertToEntity(StudentDto studentDto) {

@@ -6,6 +6,7 @@
         container_name: CrudDemoApi-db
         restart: always
         environment:
+          MYSQL_ROOT_USER: root
           MYSQL_ROOT_PASSWORD: AAAaaa011095
           MYSQL_DATABASE: Study
         volumes:
