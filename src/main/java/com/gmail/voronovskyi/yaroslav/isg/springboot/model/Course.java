@@ -9,7 +9,6 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -23,7 +22,6 @@ import java.util.List;
 @Accessors(chain = true)
 @Table(name = "courses")
 @NoArgsConstructor
-@AllArgsConstructor
 public class Course  {
 
     @Id

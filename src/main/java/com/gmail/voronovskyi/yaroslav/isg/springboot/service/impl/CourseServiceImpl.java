@@ -79,11 +79,7 @@ public class CourseServiceImpl implements CourseService {
     }
 
     private CourseDto convertToDto(Course course) {
-        try {
-            return modelMapper.map(course, CourseDto.class);
-        } catch (MappingException exception) {
-            throw new EntityNotFoundException("Course does not exist or has been deleted");
-        }
+        return modelMapper.map(course, CourseDto.class);
     }
 
     private Course convertToEntity(CourseDto courseDto) {

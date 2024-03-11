@@ -80,11 +80,7 @@ public class GroupServiceImpl implements GroupService {
     }
 
     private GroupDto convertToDto(Group group) {
-        try {
-            return modelMapper.map(group, GroupDto.class);
-        } catch (MappingException exception) {
-            throw new EntityNotFoundException("Group does not exist or has been deleted");
-        }
+        return modelMapper.map(group, GroupDto.class);
     }
 
     private Group convertToEntity(GroupDto groupDto) {
