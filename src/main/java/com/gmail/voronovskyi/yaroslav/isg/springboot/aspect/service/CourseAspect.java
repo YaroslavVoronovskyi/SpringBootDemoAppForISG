@@ -1,4 +1,4 @@
-package com.gmail.voronovskyi.yaroslav.isg.springboot.aspect;
+package com.gmail.voronovskyi.yaroslav.isg.springboot.aspect.service;
 
 import com.gmail.voronovskyi.yaroslav.isg.springboot.dto.CourseDto;
 import lombok.extern.slf4j.Slf4j;
