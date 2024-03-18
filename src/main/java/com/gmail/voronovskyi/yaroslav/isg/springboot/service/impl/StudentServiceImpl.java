@@ -2,13 +2,14 @@ package com.gmail.voronovskyi.yaroslav.isg.springboot.service.impl;
 
 import com.gmail.voronovskyi.yaroslav.isg.springboot.dto.StudentDto;
 import com.gmail.voronovskyi.yaroslav.isg.springboot.exception.NotValidDataException;
+import com.gmail.voronovskyi.yaroslav.isg.springboot.model.EmailDetails;
 import com.gmail.voronovskyi.yaroslav.isg.springboot.model.Student;
 import com.gmail.voronovskyi.yaroslav.isg.springboot.repository.StudentRepository;
 import com.gmail.voronovskyi.yaroslav.isg.springboot.service.StudentService;
+import com.gmail.voronovskyi.yaroslav.isg.springboot.util.Constants;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.modelmapper.MappingException;
 import org.modelmapper.ModelMapper;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.dao.EmptyResultDataAccessException;
@@ -23,6 +24,7 @@ import java.util.List;
 public class StudentServiceImpl implements StudentService {
 
     private final StudentRepository studentRepository;
+    private final EmailServiceImpl emailService;
     private final ModelMapper modelMapper;
 
     @Override
@@ -31,6 +33,11 @@ public class StudentServiceImpl implements StudentService {
         log.debug("Try create new Student and save in DB");
         try {
             Student student = studentRepository.save(convertToEntity(studentDto));
+            emailService.sendSimpleMail(new EmailDetails()
+                    .setRecipient(Constants.MASTER_EMAIL)
+                    .setMsgBody(Constants.EMAIL_BODY)
+                    .setSubject(Constants.EMAIL_SUBJECT + student.getFirstName()
+                            + Constants.DELIMITER + student.getFirstName()));
             return convertToDto(student);
         } catch (DataIntegrityViolationException exception) {
             throw new NotValidDataException();

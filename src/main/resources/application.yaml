@@ -3,15 +3,20 @@
         path: /swagger-ui.html
 
     spring:
-
-#      datasource:
-#        driver-class-name: com.mysql.cj.jdbc.Driver
-#        username: root
-#        password: AAAaaa011095
-#        url: jdbc:mysql://database-1.cgobzx0gtdbk.eu-central-1.rds.amazonaws.com/Study?serverTimezone=UTC
-#        platform: mysql
-#        initialization-mode: always
-#        continue-on-error: true
+      mail:
+        default-encoding: UTF-8
+        host: smtp.gmail.com
+        username:
+        password:
+        port: 587
+        properties:
+          mail:
+            smtp:
+              auth: true
+              starttls:
+                enable: true
+        protocol: smtp
+        test-connection: false
 
       datasource:
         driver-class-name: com.mysql.cj.jdbc.Driver
@@ -26,7 +31,7 @@
         show-sql: true
         generate-ddl: true
         hibernate:
-          ddl-auto: create-drop
+          ddl-auto: create
           dialect: org.hibernate.dialect.MySQL8Dialect
         database: mysql
 
